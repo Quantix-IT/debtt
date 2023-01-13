@@ -1,0 +1,50 @@
+{
+  "name": "@quantix-ict/debtt",
+  "version": "1.1.1",
+  "description": "Package for Debtt (Quantix)",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/types/index.d.ts",
+        "default": "./dist/esm/index.mjs"
+      },
+      "require": {
+        "types": "./dist/cjs/types/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    }
+  },
+  "main": "./dist/cjs/index.js",
+  "types": "./dist/cjs/types/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc -p ./configs/tsconfig.esm.json && mv dist/esm/index.js dist/esm/index.mjs",
+    "build:cjs": "tsc -p ./configs/tsconfig.cjs.json",
+    "prepack": "npm run build"
+  },
+  "keywords": [
+    "debtt",
+    "quantix"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quantix-IT/debtt.git"
+  },
+  "author": "quantix-ict",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@types/node-fetch": "^2.6.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "currency.js": "^2.0.4",
+    "date-fns": "^2.29.3",
+    "node-fetch": "^2.6.7"
+  }
+}
